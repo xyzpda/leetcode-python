@@ -5,22 +5,15 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "development",
 	"workspaceFolder": "/workspace",
-
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash",
-		"python.pythonPath": "/usr/local/bin/python",
-		"python.linting.enabled": true,
-		"python.linting.pylintEnabled": true,
-		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-		"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+	"settings": {
+		// This will ignore your local shell user setting for Linux since shells like zsh are typically 
+		// not in base container images. You can also update this to an specific shell to ensure VS Code 
+		// uses the right one for terminals and tasks. For example, /bin/bash (or /bin/ash for Alpine).
+		"terminal.integrated.shell.linux": null,
+		"python.linting.flake8Enabled": true,
+		"python.linting.mypyEnabled": true,
+		"python.linting.pylintEnabled": false,
 		"editor.formatOnSave": true,
 		"python.linting.flake8Args": [
 			"--ignore=E501,E402,W503"
@@ -28,19 +21,16 @@
 		"python.formatting.autopep8Args": [
 			"--ignore=E402"
 		],
+		"python.pythonPath": "/usr/local/bin/python",
 		"editor.tabSize": 4,
 		"editor.renderWhitespace": "boundary"
 	},
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.python"
 	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [9000],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install -r requirements.txt",
-
 }
