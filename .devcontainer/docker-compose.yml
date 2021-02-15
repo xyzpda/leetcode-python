@@ -1,0 +1,12 @@
+version: "3"
+services:
+  development:
+    image: leetoce.python/development:0.0.1
+    container_name: leetoce-development
+    tty: true
+    volumes:
+      - ..:/workspace
+    environment:
+      - no_proxy=localhost,127.0.0.1
+      - NO_PROXY=localhost,127.0.0.1
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1
